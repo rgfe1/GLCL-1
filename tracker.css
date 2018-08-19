@@ -1,0 +1,47 @@
+h1{
+  font-size:45px;
+  text-align:center;
+  justify-content: space-around;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+.iphone-wrapper{
+  width:400px;
+  border:1px solid black;
+  height:900px;
+  background-color: #505253;
+  color: #ffffff;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.button-row{
+  display:flex;
+  justify-content:center;
+  text-align: center;
+}
+#arrow{
+  justify-content: flex-start;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+#close{
+  align-content: flex-end;
+  margin-left: 340px;
+  margin-top: 20px;
+}
+#counter{
+  font-size: 70px;
+  letter-spacing: 5px;
+}
+.mins{
+  justify-content: space-between;
+  margin: 30px;
+  align-content: center;
+}
+#check{
+  align-content: flex-end;
+  margin-top: 200px;
+}
+#plus1{
+  margin-left: 20px;
+}

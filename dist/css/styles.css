@@ -1,14 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+* {
+  font-family: 'Nunito', sans-serif;
+}
 .button {
-  /*single component*/
   background-color: blue;
   height: 40px;
   width: 80px;
   display: inline-block;
-  margin: 5px 10px;
+  margin: 10px 10px;
+}
+
+.button p {
+  color: #505253;
 }
 
 .button.round {
-  /*modifier class*/
   background-color: unset;
   height: 37.5px;
   width: 37.5px;
@@ -29,7 +35,7 @@
 }
 
 .button.round.filled p {
-  color: #55552F;
+  color: #4C4F53;
 }
 
 .button.round p {
@@ -38,137 +44,77 @@
   text-align: center;
   color: gold;
   font-size: 31px;
-  font-weight: bolder;
 }
 
 .button.square {
-  /*modifier class*/
-  background-color: unset;
-  height: 44.5px;
-  width: 270px;
-  border-radius: 100px;
-  border: 4px solid unset;
+  height: 45px;
+  width: 250px;
+  border-radius: 20px;
 }
 
-.button.square.inactive {
-  background-color: #F1F2F3;
-  color: #D0D3D8;
-  border: 4px solid #F1F2F3;
-}
-
-.button.square.normal1 {
-  background-color: #F2CB50;
-  color: #987F98;
-  border: 4px solid #F2CB50;
-}
-
-.button.square.hover1 {
-  background-color: #F0D77D;
-  color: #987F98;
-  border: 4px solid #F0D77D;
-}
-
-.button.square.click1 {
-  background-color: #BEA640;
-  color: #987F98;
-  border: 4px solid #BEA640;
-}
-
-.button.square.checkMark1 {
-  background-color: #F0CC55;
-  border: 4px solid #F0CC55;
-}
-
-.button.square.checkMark1 p {
-  color: #987F98;
-  font-size: 22px;
-}
-
-.button.square.checkMark2 {
-  background-color: #F0D973;
-  border: 4px solid #F0D973;
-}
-
-.button.square.checkMark2 p {
-  color: #987F98;
-  font-size: 22px;
-}
-
-.button.square.checkMark3 {
-  background-color: #C1A244;
-  border: 4px solid #C1A244;
-}
-
-.button.square.checkMark3 p {
-  color: #453516;
-  font-size: 22px;
-}
-
-.button.square.normal2 {
-  border: 4px solid #EDCD55;
-}
-
-.button.square.normal2 P {
-  color: #EDCD55;
-}
-
-.button.square.hover2 {
-  background-color: #8D7D53;
-  border: 4px solid #F2CB50;
-}
-
-.button.square.hover2 P {
-  color: #F2CB50;
-}
-
-.button.square.click2 {
-  background-color: #EDCD55;
-  border: 4px solid #EDCD55;
-}
-
-.button.square.click2 P {
-  color: #474F58;
-}
-
-.button.square.lastCheckMark1 {
-  border: 4px solid #EFCB5B;
-}
-
-.button.square.lastCheckMark1 p {
-  color: #EFCB5B;
-  font-size: 22px;
-}
-
-.button.square.lastCheckMark2 {
-  background-color: #8C824D;
-  border: 4px solid #EFCB5B;
-}
-
-.button.square.lastCheckMark2 p {
-  color: #EFCB5B;
-  font-size: 22px;
-}
-
-.button.square.lastCheckMark3 {
-  background-color: #EFCB5B;
-  border: 4px solid #EFCB5B;
-}
-
-.button.square.lastCheckMark3 p {
-  color: #58452D;
-  font-size: 22px;
-}
-
-.button p {
+.button.square p {
   vertical-align: middle;
   margin: auto;
   text-align: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 13px;
-  font-family: sans-serif;
-  font-weight: bold;
+  font-size: 16px;
+  line-height: 15px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  font-family: Helvetica-light;
+  padding: 15px;
+}
+
+.button.square.white {
+  background-color: white;
+}
+
+.button.square.white p {
+  color: #BCBFC7;
+}
+
+.button.square.gold {
+  background-color: gold;
+}
+
+.button.square.goldlight {
+  background-color: #F0D77C;
+}
+
+.button.square.golddark {
+  background-color: darkgoldenrod;
+}
+
+.button.square.grey {
+  background-color: #4C4F53;
+  border: 3px solid gold;
+}
+
+.button.square.grey p {
+  color: gold;
+}
+
+.button.square.silver {
+  background-color: #8C8155;
+  border: 3px solid gold;
+}
+
+.button.square.silver p {
+  color: gold;
+}
+
+.button.square i {
+  color: #4C4F53;
+  font-weight: 900;
+  margin: auto 100px;
+  font-size: 25px;
+  line-height: 15px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.button.square i.goldcheck {
+  color: gold;
 }
 li {
   text-decoration: none;
