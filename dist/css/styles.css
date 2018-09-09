@@ -199,6 +199,40 @@
   display: flex;
   justify-content: space-around;
 }
+.calendarHeader {
+  display: flex;
+  justify-content: center;
+  background-color: #545454;
+  margin-top: 100px;
+  width: 400px;
+  height: 90px;
+  border: 1px solid black;
+  font-size: 25px;
+  line-height: 20px;
+  color: white;
+}
+
+.calendarHeader p {
+  justify-content: space-between;
+  font-weight: 700;
+  margin: auto 100px;
+  padding: 15px;
+  letter-spacing: 2px;
+}
+
+.calendarHeader i {
+  font-weight: 600;
+  margin: auto -40px;
+  padding: 15px;
+}
+
+.calendarHeader i.fa-chevron-left {
+  margin-left: 100px;
+}
+
+.calendarHeader i.fa-chevron-right {
+  margin-right: 100px;
+}
 * {
   font-family: 'Nunito', sans-serif;
 }

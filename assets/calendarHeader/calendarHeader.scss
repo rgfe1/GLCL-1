@@ -1,0 +1,34 @@
+.calendarHeader {
+	display: flex;
+	justify-content: center;
+	background-color: #545454;
+	//justify-content: space-between;
+	margin-top: 100px;
+	width: 400px;
+	height: 90px;
+	border: 1px solid black;
+	font-size: 25px;
+	line-height: 20px;
+	color: white;
+
+  p{
+		justify-content: space-between;
+		font-weight: 700;
+		margin: auto 100px;
+		padding: 15px;
+		letter-spacing: 2px;
+  }
+
+  i{
+    font-weight: 600;
+    margin: auto -40px;
+    padding: 15px;
+
+    &.fa-chevron-left{
+      margin-left: 100px;
+    }
+    &.fa-chevron-right{
+      margin-right: 100px;
+    }
+  }
+}
