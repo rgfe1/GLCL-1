@@ -1,5 +1,27 @@
 'use strict';
 
+var fn = function fn() {
+	// adding p tag for minus
+	var minus = document.getElementsByClassName('minus');
+
+	for (var i = 0; i < minus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '-';
+		minus[i].appendChild(e);
+	}
+
+	//adding p tag for plus
+	var plus = document.getElementsByClassName('plus');
+	for (var i = 0; i < plus.length; i++) {
+		var e = document.createElement('p');
+		e.innerHTML = '+';
+		plus[i].appendChild(e);
+	}
+};
+
+document.addEventListener('DOMContentLoaded', fn, false);
+'use strict';
+
 var calendar = function calendar() {
 
   var firstDay = function firstDay(year, month) {
@@ -10,11 +32,47 @@ var calendar = function calendar() {
     return new Date(year, month, 0).getDate();
   };
 
+  //(new Date()).getFullYear() stackoverflow example
+  //var currentTime = new Date() stackoverflow example
+  var currentTime = new Date(); //should I put new Time?
+  var currentDay = new Date();
+  var currentMonth = new Date();
+  var currentYear = new Date();
+
   //TODO: Create currentTime, currentDay, currentMonth, currentYear variables based on this stack overflow answer
   //https://stackoverflow.com/a/6002265/5885911
   //Use const rather than let or var, we use const when a variable doesn't get reassigned or updated overtime.
   //Since these are functions, we don't expect the functions to change so we can make them constants.
 
+  var lastMonth = function lastMonth(year, month, dayOfWeek) {
+    //return new Date(year, month, dayOfWeek).getDate(); //deleted
+
+
+    var previousMonth = month - 1; //is this correct? month is a parameter
+
+    var daysInPreviousMonth = function daysInPreviousMonth(year, previousMonth) {
+      //from here y, p
+      //return new Date(year, previousMonth).getDate();//deleted
+
+      var previousMonthArr = [];
+      var ld = lastDay(year, previousMonth);
+      var i = 0;
+
+      while (i < daysOfTheWeek) {
+        //or dayOfWeek?
+        previousMonthArr.push(ld); // before I had: ld=previousMonthArr - correct way to do it? push ld to the previousMonthArr
+        ld--;
+        i++;
+      }
+      return previousMonthArr;
+    };
+    if (previousMonth < 1) {
+      previousMonth = 12; //is this correct? or leave the below sttment
+      return daysInPreviousMonth(year - 1, previousMonth); //should i put "year"?
+    } else {
+      return daysInPreviousMonth(year, previousMonth);
+    }
+  }; //end lastMonth()
 
   //TODO: Create the lastMonth function which takes the arguments, "year", "month", "dayOfWeek"
   //Create the previousMonth variable which is equal to month-1
@@ -39,7 +97,6 @@ var calendar = function calendar() {
   //return the daysInPreviousMonth function which takes the arguments year and previousMonth
   //end lastMonth function
 
-
   var daysOfTheWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
   var calendarHead = document.getElementById('calendar-head');
@@ -56,6 +113,8 @@ var calendar = function calendar() {
   var populateCalendarBody = function populateCalendarBody() {
     var currentDaysInMonth = lastDay(2018, 9);
     var firstDayOfMonth = firstDay(2018, 9);
+
+    var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
     //TODO: Create lastMonthArr const which is equal to the lastMonth function which
     // takes the arguments currentYear, currentMonth, and firstDayOfMonth
     var daysInRow = 7;
@@ -63,12 +122,22 @@ var calendar = function calendar() {
     var currentRows = 0;
     var currentDayOfMonthIndex = 1; //current day of current month (e.g. september)
     var currentCalendarDayIndex = 0; //current index of days on calendar (i.e. daysInRow * totalRows)
-    //TODO: Create lmaIndex variable which is equal to the firstDayOfMonth-1
 
+    var lmaIndex = firstDayOfMonth - 1;
+
+    //TODO: Create lmaIndex variable which is equal to the firstDayOfMonth-1
     while (currentRows < totalRows) {
       var calendarRow = document.createElement('div');
       for (var i = 0; i < daysInRow; i++) {
         var day = document.createElement('p');
+
+        if (currentCalendarDayIndex < firstDayOfMonth) {
+          //is this correct?
+          day.innerHTML = lastMonthArr[lmaIndex]; //set day inner html to the current lmaIndex of the lastMonthArr
+          day.classList.add("grayedOut"); // add the 'grayedOut' class to the classList of the "day" variable
+          lmaIndex--;
+        }
+
         //TODO: Create a new if condition which says
         //"If the currentCalendarDayIndex is less than the firstDayOfMonth"
         //Within the if condition
@@ -83,7 +152,18 @@ var calendar = function calendar() {
           currentDayOfMonthIndex++;
         }
 
-        //TODO: BONUS: You can add another if condition here if you want, which will just say "add grayed numbers to the end of the month until we run out of space on the calendar"
+        //not sure about this
+
+        if (currentDayOfMonthIndex >= currentDaysInMonth && currentCalendarDayIndex <= firstDayOfMonth) {
+          //is this correct?
+          day.innerHTML = currentCalendarDayIndex; //set day inner html to the current lmaIndex of the lastMonthArr
+          day.classList.add("grayedOut");
+          currentCalendarDayIndex++; // add the 'grayedOut' class to the classList of the "day" variable
+          //lmaIndex --;
+        }
+
+        //TODO: BONUS: You can add another if condition here if you want, which will just say "add grayed numbers to
+        // the end of the month until we run out of space on the calendar"
 
 
         currentCalendarDayIndex++;
@@ -97,28 +177,6 @@ var calendar = function calendar() {
 };
 
 document.addEventListener('DOMContentLoaded', calendar, false);
-'use strict';
-
-var fn = function fn() {
-	// adding p tag for minus
-	var minus = document.getElementsByClassName('minus');
-
-	for (var i = 0; i < minus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '-';
-		minus[i].appendChild(e);
-	}
-
-	//adding p tag for plus
-	var plus = document.getElementsByClassName('plus');
-	for (var i = 0; i < plus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '+';
-		plus[i].appendChild(e);
-	}
-};
-
-document.addEventListener('DOMContentLoaded', fn, false);
 'use strict';
 
 var list = [];
