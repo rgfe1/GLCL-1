@@ -82,10 +82,11 @@ var calendar = function calendar() {
   // let titleIndex = Number(titleCarousel.getAttribute('title-starting-index'));
 
   var calendarBody = document.getElementById('calendar-body');
-  var populateCalendarBody = function populateCalendarBody() {
-    var currentDaysInMonth = lastDay(2018, 9);
-    var firstDayOfMonth = firstDay(2018, 9);
-    var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
+  var populateCalendarBody = function populateCalendarBody(selectedYear, selectedMonth) {
+    calendarBody.innerHTML = "";
+    var currentDaysInMonth = lastDay(selectedYear, selectedMonth);
+    var firstDayOfMonth = firstDay(selectedYear, selectedMonth);
+    var lastMonthArr = lastMonth(selectedYear, selectedMonth, firstDayOfMonth);
     var daysInRow = 7;
     var totalRows = 6;
     var currentRows = 0;
@@ -117,11 +118,29 @@ var calendar = function calendar() {
       currentRows++;
     }
   };
-  populateCalendarBody();
+  populateCalendarBody(currentYear, currentMonth);
   var calendar = document.getElementById('calendar');
+  var currentMonthIndex = currentMonth.valueOf();
+  var currentYearIndex = currentYear.valueOf();
   // console.log(calendar);
-  calendar.addEventListener('arrowClick', function () {
-    console.log('arrow clicked calllllll!');
+  calendar.addEventListener('monthChange', function (event) {
+    //console.log('calendar month change event', event);
+
+    //change the current month and if necessary, the current year
+    var changeDirection = event.detail.changeDirection;
+    if (changeDirection === 'left') {
+      currentMonthIndex = currentMonthIndex - 1;
+      //console.log('currentDayOfMonthIndex', currentMonthIndex);
+      //console.log.log('left', currentMonthIndex-1);
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    } else if (changeDirection === 'right') {
+      currentMonthIndex = currentMonthIndex + 1;
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    }
+    //if(cahngedirection === 'left){
+    //go back one onth
+    //if change direction === 'right'
+    //go forward one month
   }, true);
 };
 
